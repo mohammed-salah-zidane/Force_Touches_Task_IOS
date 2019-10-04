@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    //declare helper Variables
     var headerContainer : UIStackView!
     var cellId = "Cell"
     let postImages = [#imageLiteral(resourceName: "hello-i-m-nik-743251-unsplash"),#imageLiteral(resourceName: "max-nelson-492729-unsplash"),#imageLiteral(resourceName: "aditya-romansa-117344-unsplash"),#imageLiteral(resourceName: "caspar-rubin-224229-unsplash"),#imageLiteral(resourceName: "naassom-azevedo-180913-unsplash"),#imageLiteral(resourceName: "meghan-holmes-604864-unsplash"),#imageLiteral(resourceName: "sam-bloom-358675-unsplash"),#imageLiteral(resourceName: "ak-n-cakiner-413313-unsplash"),#imageLiteral(resourceName: "eva-darron-214170-unsplash"),#imageLiteral(resourceName: "taras-shypka-424924-unsplash"),#imageLiteral(resourceName: "naruto_uzumaki_naruto_hinata_hyugo_104228_1280x720"),#imageLiteral(resourceName: "neonbrand-629435-unsplash"),#imageLiteral(resourceName: "aurelien-designatic-396254-unsplash"),#imageLiteral(resourceName: "max-nelson-571823-unsplash")]
@@ -22,7 +23,7 @@ class ProfileViewController: UIViewController {
       imageView.layer.cornerRadius = 50
       imageView.bounds = CGRect(x: 0, y: 0, width: 100, height:100 )
       imageView.borderWidth = 2
-      imageView.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+      imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
       
       return imageView
     }()
@@ -31,6 +32,8 @@ class ProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "Mohamed Salah Zidane"
         label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.adjustsFontSizeToFitWidth = true
+
         return label
     }()
     let locationLabel :UILabel = {
@@ -105,20 +108,20 @@ class ProfileViewController: UIViewController {
         return collectionView
     }()
     
-  
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUserHeaderView()
+        setupUserInfoView()
         setUserStatusView()
         setupPostsCollectionView()
     }
 
-    
+}
+//Mark:- Create Views and add constraints
+extension ProfileViewController {
     
     //Mark:- set header that contains user
-    fileprivate func setupUserHeaderView() {
+    fileprivate func setupUserInfoView() {
         let stackView = UIStackView(arrangedSubviews: [userNameLabel, locationLabel, bioLabel])
         stackView.distribution = .fillProportionally
         stackView.alignment = .fill
@@ -136,7 +139,6 @@ class ProfileViewController: UIViewController {
         headerContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerContainer)
         
-
         profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         profileImageView.contentMode = .scaleAspectFill
@@ -154,7 +156,6 @@ class ProfileViewController: UIViewController {
         
         userStatesView.addSubview(stackView)
         view.addSubview(userStatesView)
-
         userStatesView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -189,7 +190,10 @@ extension ProfileViewController:UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 2) / 4
-        
+        //For SE
+        if UIScreen.main.nativeBounds.height == 1136 {
+            return CGSize(width: (view.frame.width - 2) / 4.05, height: width)
+        }
         return CGSize(width: width, height: width)
     }
     
@@ -202,8 +206,4 @@ extension ProfileViewController:UICollectionViewDelegate,UICollectionViewDataSou
         cell?.photoImageView.image = postImages[indexPath.row]
         return cell!
     }
-    
-    
-    
-    
 }

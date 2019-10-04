@@ -57,21 +57,21 @@ extension UIView{
     }
     
     
-    var borderColor: UIColor {
-        get {
-            return self.borderColor
-        }
-        set {
-            self.addBorderColor(color: newValue)
-        }
-        
-    }
-    func addBorderColor(color: UIColor )
-    {
-        // self.layer.masksToBounds = true
-        self.layer.borderColor = color.cgColor
-        
-    }
+//    var borderColor: UIColor {
+//        get {
+//            return self.borderColor
+//        }
+//        set {
+//            self.addBorderColor(color: newValue)
+//        }
+//        
+//    }
+//    func addBorderColor(color: UIColor )
+//    {
+//        // self.layer.masksToBounds = true
+//        self.layer.borderColor = color.cgColor
+//        
+//    }
     
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
