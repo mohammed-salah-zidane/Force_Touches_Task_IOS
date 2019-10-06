@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
       let imageView = UIImageView()
       imageView.image = #imageLiteral(resourceName: "Profile")
       imageView.clipsToBounds = true
-      imageView.layer.cornerRadius = 50
+      imageView.layer.cornerRadius = 60
       imageView.bounds = CGRect(x: 0, y: 0, width: 100, height:100 )
       imageView.borderWidth = 2
       imageView.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController {
     
     let userNameLabel : UILabel = {
         let label = UILabel()
-        label.text = "Mohamed Salah Zidane"
+        label.text = "Mohamed Salah"
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.adjustsFontSizeToFitWidth = true
 
@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
     let locationLabel :UILabel = {
         let label = UILabel()
         label.text = "Cairo, EG"
-        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         label.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return label
     }()
@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
     
     let userStatesView :UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.9058823529, green: 0.9176470588, blue: 0.9294117647, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         view.shadow = true
         view.cornerRadius = 10
         return view
@@ -63,9 +63,9 @@ class ProfileViewController: UIViewController {
     
     let postsLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "14\n", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "14\n", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)])
         
-        attributedText.append(NSAttributedString(string: "posts", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "Posts", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         
         label.attributedText = attributedText
         label.numberOfLines = 0
@@ -76,9 +76,9 @@ class ProfileViewController: UIViewController {
     
     let followersLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "2000\n", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "1.5M\n", attributes: [NSAttributedString.Key.font :  UIFont.systemFont(ofSize: 16, weight: .bold)])
         
-        attributedText.append(NSAttributedString(string: "followers", attributes: [NSAttributedString.Key.foregroundColor :#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "Followers", attributes: [NSAttributedString.Key.foregroundColor :#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         
         label.attributedText = attributedText
         label.numberOfLines = 0
@@ -88,9 +88,9 @@ class ProfileViewController: UIViewController {
     
     let followingLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "150\n", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "71\n", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .bold)])
         
-        attributedText.append(NSAttributedString(string: "following", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "Following", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         
         label.attributedText = attributedText
         label.numberOfLines = 0
@@ -139,11 +139,11 @@ extension ProfileViewController {
         headerContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(headerContainer)
         
-        profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
         profileImageView.contentMode = .scaleAspectFill
         headerContainer.topAnchor.constraint(equalTo: view.topAnchor, constant:100).isActive = true
-        headerContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        headerContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
         headerContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
     }
     
@@ -164,8 +164,8 @@ extension ProfileViewController {
         stackView.topAnchor.constraint(equalTo: userStatesView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: userStatesView.bottomAnchor).isActive = true
         
-        userStatesView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        userStatesView.topAnchor.constraint(equalTo: headerContainer.bottomAnchor, constant: 50).isActive = true
+        userStatesView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+        userStatesView.topAnchor.constraint(equalTo: headerContainer.bottomAnchor, constant: 40).isActive = true
         userStatesView.centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: 0).isActive = true
         userStatesView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -177,9 +177,9 @@ extension ProfileViewController {
         collectionview.delegate = self
         self.view.addSubview(collectionview)
         
-        collectionview.topAnchor.constraint(equalTo: userStatesView.bottomAnchor, constant: 20).isActive = true
+        collectionview.topAnchor.constraint(equalTo: userStatesView.bottomAnchor, constant: 40).isActive = true
         collectionview.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        collectionview.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        collectionview.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85).isActive = true
         collectionview.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10).isActive = true
         
     }
@@ -189,10 +189,11 @@ extension ProfileViewController {
 extension ProfileViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 2) / 4
+        let width = (view.frame.width - 2) / 3.8
         //For SE
         if UIScreen.main.nativeBounds.height == 1136 {
-            return CGSize(width: (view.frame.width - 2) / 4.05, height: width)
+            print("se iphone")
+            return CGSize(width: (view.frame.width - 2) / 4, height: (view.frame.width - 2) / 4)
         }
         return CGSize(width: width, height: width)
     }
